@@ -822,6 +822,23 @@ void Foam::chemkinReader::read
     {}
 
     yy_delete_buffer(bufferPtr);
+
+    // consistency check
+    forAllConstIter(IDLList<entry>, transportDict_, iter)
+    {
+        // is it a species?
+        if (iter.lookupPtr("transport") != nullptr)
+        {
+            // ensure species are defined in thermo file
+            const keyType& const key = iter.keyword();
+            if (!specieNames_->contains(key))
+            {
+                WarningInFunction
+                    << "Species " << key << " defined in OpenFOAM transport "
+                    "file not found in thermo / chemkin file" << endl;
+            }
+        }
+    }
 }
 
 

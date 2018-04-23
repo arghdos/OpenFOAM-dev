@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 
     argList::validArgs.append("CHEMKIN file");
     argList::validArgs.append("CHEMKIN thermodynamics file");
-    argList::validArgs.append("CHEMKIN transport file");
+    argList::validArgs.append("OpenFOAM transport file");
     argList::validArgs.append("OpenFOAM chemistry file");
     argList::validArgs.append("OpenFOAM thermodynamics file");
 
