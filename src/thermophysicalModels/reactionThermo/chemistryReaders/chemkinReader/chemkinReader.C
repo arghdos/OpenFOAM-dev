@@ -826,8 +826,10 @@ void Foam::chemkinReader::read
     // consistency check
     forAllConstIter(IDLList<entry>, transportDict_, iter)
     {
+        // is dictionary?
+        const dictionary& dict = iter->dictionary();
         // is it a species?
-        if (iter.lookupPtr("transport") != nullptr)
+        if (dict.lookupPtr("transport") != nullptr)
         {
             // ensure species are defined in thermo file
             const keyType& const key = iter.keyword();
